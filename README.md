@@ -20,8 +20,13 @@ The enemies move in varying speeds on the gray bricks. Once the player collides 
 ### Installation:
 
 1. Download the game from github or clone the repository onto your local workstation
+<<<<<<< HEAD
   * [Git clone](https://github.com/Rosenny08/frontend-nanodegree-arcade-game-master.git)
   * [Zip file](https://github.com/Rosenny08/frontend-nanodegree-arcade-game-master.git)
+=======
+  * [Zip file](https://github.com/Rosenny08/frontend-nanodegree-arcade-game/archive/arcade-master.zip)
+  * [Git clone](https://github.com/Rosenny08/frontend-nanodegree-arcade-game-master)
+>>>>>>> 7ca5bda7123acca361424261ec774bfa4a0e8258
 2. Open a browser window and navigate to the index.html file in your application's directory
 3. Now you are free to play
 
