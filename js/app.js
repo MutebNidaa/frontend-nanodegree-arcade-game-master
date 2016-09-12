@@ -4,25 +4,12 @@ var Enemy = function(x, y, speed) {
     // we've provided one for you to get started
     this.x = x;
     this.y = y;
-    this.originalSpeed = speed;
     this.speed = speed;
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
     this.sprite = 'images/enemy-bug.png';
 };
-
-function randomX() {
-    return Math.random() * 505;
-}
-
-function randomY() {
-    return Math.random() * 184  + 50;
-}
-
-function randomSpeed() {
-    return Math.random() * 256;
-}
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
@@ -32,24 +19,8 @@ Enemy.prototype.update = function(dt) {
     // all computers.
     this.x += this.speed * dt;
 
-    if (player.x > this.x && player.y > this.y - 50 && player.y < this.y + 50)
-    {    
-        this.speed += 200 * dt;
-        if (this.speed > 255) {
-            this.speed = 255;
-        }
-    } else {
-        this.speed -= 200 * dt;
-        if (this.speed < this.originalSpeed) {
-            this.speed = this.originalSpeed;
-        }
-    }
-
     if (this.x >= 505) {
         this.x = 0;
-        this.y = randomY();
-        this.speed = randomSpeed();
-        this.originalSpeed = this.speed;
     }
     checkCollision(this);
 };
@@ -82,16 +53,16 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left') {
-        player.x -= player.speed;
+       this.x -= this.speed;
     }
     if (keyPress == 'up') {
-        player.y -= player.speed - 20;
+        this.y -= this.speed - 20;
     }
     if (keyPress == 'right') {
-        player.x += player.speed;
+        this.x += this.speed;
     }
     if (keyPress == 'down') {
-        player.y += player.speed - 20;
+        this.y += this.speed - 20;
     }
     console.log('keyPress is: ' + keyPress);
 };
@@ -154,7 +125,7 @@ var increaseDifficulty = function(numEnemies) {
 
     // load new set of enemies
     for (var i = 0; i <= numEnemies; i++) {
-        var enemy = new Enemy(randomX(), randomY(), randomSpeed());
+        var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
         
         allEnemies.push(enemy);
     }
@@ -169,7 +140,7 @@ var player = new Player(202.5, 383, 50);
 var score = 0;
 var gameLevel = 1;
 var scoreLevelDiv = document.createElement('div');
-var enemy = new Enemy(randomX(), randomY(), randomSpeed());
+var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
 
 allEnemies.push(enemy);
 
