@@ -41,7 +41,7 @@ var Player = function(x, y, speed) {
 };
 
 Player.prototype.update = function() {
-    
+
 }
 
 
@@ -53,7 +53,7 @@ Player.prototype.render = function() {
 
 Player.prototype.handleInput = function(keyPress) {
     if (keyPress == 'left') {
-       this.x -= this.speed;
+        this.x -= this.speed;
     }
     if (keyPress == 'up') {
         this.y -= this.speed - 20;
@@ -72,25 +72,25 @@ var displayScoreLevel = function(aScore, aLevel) {
     var canvas = document.getElementsByTagName('canvas');
     var firstCanvasTag = canvas[0];
 
-    
-    scoreLevelDiv.innerHTML = 'Score: ' + aScore
-        + ' / ' + 'Level: ' + aLevel;
+
+    scoreLevelDiv.innerHTML = 'Score: ' + aScore +
+        ' / ' + 'Level: ' + aLevel;
     document.body.insertBefore(scoreLevelDiv, firstCanvasTag[0]);
 };
 
 var checkCollision = function(anEnemy) {
-   
+
     if (
-        player.y + 131 >= anEnemy.y + 90
-        && player.x + 25 <= anEnemy.x + 88
-        && player.y + 73 <= anEnemy.y + 135
-        && player.x + 76 >= anEnemy.x + 11) {
+        player.y + 131 >= anEnemy.y + 90 &&
+        player.x + 25 <= anEnemy.x + 88 &&
+        player.y + 73 <= anEnemy.y + 135 &&
+        player.x + 76 >= anEnemy.x + 11) {
         console.log('collided');
         player.x = 202.5;
         player.y = 383;
     }
 
-    if (player.y + 63 <= 0) {        
+    if (player.y + 63 <= 0) {
         player.x = 202.5;
         player.y = 383;
         console.log('Congrats, you made it!');
@@ -107,7 +107,7 @@ var checkCollision = function(anEnemy) {
 
     // check if player runs into left, bottom, or right canvas walls
     // prevent player from moving beyond canvas wall boundaries
-    if (player.y > 383 ) {
+    if (player.y > 383) {
         player.y = 383;
     }
     if (player.x > 402.5) {
@@ -126,7 +126,7 @@ var increaseDifficulty = function(numEnemies) {
     // load new set of enemies
     for (var i = 0; i <= numEnemies; i++) {
         var enemy = new Enemy(0, Math.random() * 184 + 50, Math.random() * 256);
-        
+
         allEnemies.push(enemy);
     }
 };
@@ -157,5 +157,3 @@ document.addEventListener('keydown', function(e) {
     player.handleInput(allowedKeys[e.keyCode]);
     console.log(allowedKeys[e.keyCode]);
 });
-
-
