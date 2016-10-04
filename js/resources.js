@@ -23,10 +23,6 @@
                 _load(url);
             });
         } else {
-            /* The developer did not pass an array to this function,
-             * assume the value is a string and call our image loader
-             * directly.
-             */
             _load(urlOrArr);
         }
     }
